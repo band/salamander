@@ -36,7 +36,7 @@ def main():
     except Exception as e:
         logging.error(f"Failed to read input file: {e}")
         return
-    print(prompt)
+    logging.debug("the prompt: %s", prompt)
     # Prepare the request data
     headers = {
         "X-Api-Key": api_key,
@@ -48,15 +48,14 @@ def main():
         "max_tokens": 1024,
         "messages": [{"role": "user", "content": f"{prompt}"}]
     }
-    print('headers: ',headers)
-    print('data: ',data)
+    logging.debug('data: %s ', data)
     # Send the request
     try:
         response = requests.post(API_URL, headers=headers, data=json.dumps(data))
         response.raise_for_status()  # Raise an error for bad status codes
         result = response.json()
-        logging.info("result: %s", result)
-        output_content = result.get('content')[0].get('text','')
+        logging.debug("result: %s", result)
+        output_content = result.get('content', [{}])[0].get('text','')
 
         if args.output:
             with open(args.output, 'w') as file:
