@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import argparse
-import requests
-import os
 import json
-import logging
+import os
+import requests
 
 # Set up logging
+import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
