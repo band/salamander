@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-  anolis.py is based on salamader.py, written by Peter Kaminski, and it cousin gecko.py
-  - one main difference is that this code is written to interact with Google's Gemini API
+  anolis.py is based on salamader.py, written by Peter Kaminski, and its cousin gecko.py
+  (Anolis is an iguanian lizard native to the Americas (https://en.wikipedia.org/wiki/Anolis))
+  - this code is written to interact with Google's Gemini API
   2024-04-05 TODO: specify and document prompt structures and examples (applies here as well)
 """
 import argparse
 import json
 import os
 import requests
-
 
 # Set up logging
 import logging
@@ -36,13 +36,15 @@ def main():
         logging.error(f"Failed to read input file: {e}")
         return
     logging.debug("the prompt: %s", prompt)
-    print(prompt)
+
     # prepare the request data
     headers = {
         "content-type": "application/json",
     }
 
-    data = {"contents": [ {"parts":[{"text":"why is the sky blue?"}]}]}
+    data = {
+        "contents": [ {"parts":[{"text":f"{prompt}"}]}]
+    }
     logging.debug('data: %s ', data)
 
     # Send the request
