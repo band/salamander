@@ -53,8 +53,7 @@ def main():
         response.raise_for_status()  # Raise an error for bad status codes
         result = response.json()
         logging.debug("result: %s", result)
-#        output_content = result.get('content', [{}])[0].get('text','')
-        output_content=result.get('candidates')[0].get('content').get('parts')[0].get('text')
+        output_content=result.get('candidates', [{}])[0].get('content', '').get('parts', [{}])[0].get('text', '')
 
         if args.output:
             with open(args.output, 'w') as file:
