@@ -43,7 +43,12 @@ pip install -r requirements.txt
 ./gecko.py -i prompts/skybluePrompt.md
 ./iguana.py -i prompts/skybluePrompt.md
 ```
-  
+
+ - The code generation prompt that was fed to "ChatGPT Plus" to create
+   the first sample of `salamander.py` is found in
+   `prompts/salamanderPrompt.md`. It can be used to compare how OpenAI,
+   Claude, and Gemini respond to a prompt like this.  
+
 ### Plans and TODOs:
    
  - experiment with some summarization and topic extraction prompts  
