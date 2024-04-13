@@ -2,6 +2,7 @@
 """
   gecko.py is based on salamader.py, written by Peter Kaminski
   - one main difference is that this code is written to interact with Anthropic's Claude-3 API
+  2024-04-05 TODO: specify and document prompt structures and examples
 """
 import argparse
 import json
@@ -21,7 +22,7 @@ def main():
 
     # Constants for API
     API_URL = "https://api.anthropic.com/v1/messages"
-    MODEL = "claude-3-opus-20240229"
+    MODEL = "claude-3-sonnet-20240229"
 
     # Read API key from environment variable
     api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -37,6 +38,7 @@ def main():
         logging.error(f"Failed to read input file: {e}")
         return
     logging.debug("the prompt: %s", prompt)
+
     # Prepare the request data
     headers = {
         "X-Api-Key": api_key,
@@ -49,6 +51,7 @@ def main():
         "messages": [{"role": "user", "content": f"{prompt}"}]
     }
     logging.debug('data: %s ', data)
+
     # Send the request
     try:
         response = requests.post(API_URL, headers=headers, data=json.dumps(data))

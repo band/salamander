@@ -53,14 +53,14 @@ def main():
         response.raise_for_status()  # Raise an error for bad status codes
         result = response.json()
         logging.debug("result: %s", result)
-        output_content=result.get('candidates', [{}])[0].get('content', '').get('parts', [{}])[0].get('text', '')
+        output_text=result.get('candidates', [{}])[0].get('content', {}).get('parts', [{}])[0].get('text', '')
 
         if args.output:
             with open(args.output, 'w') as file:
-                file.write(output_content)
+                file.write(output_text)
             logging.info(f"Response written to {args.output}")
         else:
-            print(output_content)
+            print(output_text)
     except Exception as e:
         logging.error(f"Failed to communicate with GOOGLE API: {e}")
 
