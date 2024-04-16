@@ -15,7 +15,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
-    parser = argparse.ArgumentParser(description="Interact with Anthropic's Claude-3 API.")
+    parser = argparse.ArgumentParser(description="Interact with Google's Gemini-pro API.")
     parser.add_argument('-i', '--input', required=True, help='Input file containing the prompt for Claude-3.')
     parser.add_argument('-o', '--output', help='Output file the response is written to. Prints to stdout if not specified.')
 

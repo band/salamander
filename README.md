@@ -11,10 +11,13 @@
 	  
 	- each LLM does require an API key  
 	
+	- `-h` or `--help` provides argument descriptions
+	
 - `salamander.py` is the original program written to provide OpenAI text
   output in response to an input file that contains some prompt text.
 
-- `gecko.py` is a similar program that uses Anthropic's Claude-3-sonnet model.
+- `gecko.py` is a similar program that uses Anthropic's Claude-3-sonnet model. Specify a model name ("opus", "sonnet",
+  "haiku") with the `-m` argument.
   
 - `iguana.py` uses Google's Gemini-Pro model.
 
