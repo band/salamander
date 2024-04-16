@@ -17,12 +17,16 @@ def main():
     parser = argparse.ArgumentParser(description="Interact with Anthropic's Claude-3 API.")
     parser.add_argument('-i', '--input', required=True, help='Input file containing the prompt for Claude-3.')
     parser.add_argument('-o', '--output', help='Output file the response is written to. Prints to stdout if not specified.')
-
+    parser.add_argument('-m', '--model', help="Claude-3 model to use; 'opus' (used if no model specified), 'sonnet', or 'haiku'")
     args = parser.parse_args()
 
-    # Constants for API
-    API_URL = "https://api.anthropic.com/v1/messages"
-    MODEL = "claude-3-sonnet-20240229"
+    match args.model:
+        case ["sonnet" | "opus"]:
+            model = f"claude-3-{args.model}-20240229"
+        case "haiku":
+            model = f"claude-3-{args.model}-20240307"
+        case _:
+            model = 'claude-3-opus-20240229'
 
     # Read API key from environment variable
     api_key = os.getenv("ANTHROPIC_API_KEY")
@@ -40,13 +44,15 @@ def main():
     logging.debug("the prompt: %s", prompt)
 
     # Prepare the request data
+    api_url = "https://api.anthropic.com/v1/messages"
+
     headers = {
         "X-Api-Key": api_key,
         "anthropic-version": "2023-06-01",
         "content-type": "application/json",
     }
     data = {
-        "model": MODEL,
+        "model": model,
         "max_tokens": 1024,
         "messages": [{"role": "user", "content": f"{prompt}"}]
     }
@@ -54,7 +60,7 @@ def main():
 
     # Send the request
     try:
-        response = requests.post(API_URL, headers=headers, data=json.dumps(data))
+        response = requests.post(api_url, headers=headers, data=json.dumps(data))
         response.raise_for_status()  # Raise an error for bad status codes
         result = response.json()
         logging.debug("result: %s", result)
