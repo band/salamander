@@ -3,8 +3,8 @@ env.sh
 .env
 
 # output
-!requirements.txt
 *.txt
+!requirements.txt
 *.json
 
 # macOS
