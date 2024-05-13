@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def main():
     parser = argparse.ArgumentParser(description="Interact with Anthropic's Claude-3 API.")
     parser.add_argument('-i', '--input', required=True, help='Input file containing the prompt for Claude-3.')
-    parser.add_argument('-o', '--output', help='Output file the response is written to. Prints to stdout if not specified.')
+    parser.add_argument('-o', '--output', help='Output file to caputre the response. Prints to stdout if not specified.')
     parser.add_argument('-m', '--model', help="Claude-3 model to use; 'opus' (used if no model specified), 'sonnet', or 'haiku'")
     args = parser.parse_args()
 

@@ -1,0 +1,1 @@
+Write a javascript class, executable in a recent Chrome browser, that implements the common features of a mathematical set of known size, including the ability to add and remove an element and to calculate set union, intersection, and complement, and which works correctly for any set of order smaller than 10000 and whose performance is optimized for sets of order less than 100.

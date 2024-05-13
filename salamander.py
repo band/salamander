@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def main():
     parser = argparse.ArgumentParser(description="Interact with OpenAI's GPT-4 Turbo Preview API.")
     parser.add_argument('-i', '--input', required=True, help='Input file containing the prompt for GPT-4.')
-    parser.add_argument('-o', '--output', help='Output file to write the response to. Prints to stdout if not specified.')
+    parser.add_argument('-o', '--output', help='Output file to capture the response. Prints to stdout if not specified.')
 
     args = parser.parse_args()
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-  anolis.py is based on salamader.py, written by Peter Kaminski, and its cousin gecko.py
-  (Anolis is an iguanian lizard native to the Americas (https://en.wikipedia.org/wiki/Anolis))
+  iguana.py is based on salamader.py, written by Peter Kaminski, and its cousin gecko.py
   - this code is written to interact with Google's Gemini API
   2024-04-05 TODO: specify and document prompt structures and examples (applies here as well)
 """
@@ -17,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 def main():
     parser = argparse.ArgumentParser(description="Interact with Google's Gemini-pro API.")
     parser.add_argument('-i', '--input', required=True, help='Input file containing the prompt for Claude-3.')
-    parser.add_argument('-o', '--output', help='Output file the response is written to. Prints to stdout if not specified.')
+    parser.add_argument('-o', '--output', help='Output file to capture the response. Prints to stdout if not specified.')
 
     args = parser.parse_args()
 
