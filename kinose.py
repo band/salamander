@@ -48,11 +48,10 @@ def main():
     # Send the request
     try:
         response = requests.post(api_url, headers=headers, json=data)
-        if response.status_code == 200:
-            return response.json()['generations'][0]['text']
-        else:
-            print(f"Request failed with status code {response.status_code}")
-            return None
+        response.raise_for_status() # raise error for bad status codes
+        result=response.json()
+        logging.debug("result: %s", result)
+        output_content = result.get('generations', [{}])[0].get('text','')
 
         if args.output:
             with open(args.output, 'w') as file:
@@ -64,4 +63,4 @@ def main():
         logging.error(f"Failed to communicate with Cohere API: {e}")
 
 if __name__ == "__main__":
-    exit(main())
+    (main())
