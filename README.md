@@ -21,6 +21,8 @@
   
 - `iguana.py` uses Google's Gemini-Pro model.
 
+- `kinose.py` uses Cohere's generate API endpoint.
+
 ### How to use these programs:
 
 - One way to use these programs is to set up a local Python virtual
@@ -59,5 +61,7 @@ pip install -r requirements.txt
  
  - experiment with using the previous response as part of a topic and
    summarization conversation  
+
+ - (WIP) read prompt input from a file or standard input
 
 Please post issues.
